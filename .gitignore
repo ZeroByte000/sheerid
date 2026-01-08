@@ -1,0 +1,33 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Generated images / PDFs
+image/
+*.pdf
+
+# Logs
+*.log
+
+# Playwright cache (if present)
+.playwright/
+
+# Node modules (if any)
+node_modules/

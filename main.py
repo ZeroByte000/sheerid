@@ -8,6 +8,7 @@ import re
 import random
 import argparse
 import sys
+import os
 from typing import Dict, Optional, Tuple
 import httpx
 from rich.console import Console
@@ -83,12 +84,30 @@ def main():
     
     args = parser.parse_args()
     
+    os.system("cls" if os.name == "nt" else "clear")
     tampilkan_banner()
     
     verification_id_input = args.verification_id or args.url
     if not verification_id_input:
+        verification_id_input = input("Masukkan verification ID atau URL: ").strip()
+    if not verification_id_input:
         console.print("Masukkan verification ID atau URL!", style=BOLD_CYAN)
         sys.exit(1)
+
+    if not args.nama:
+        nama_input = input("Nama lengkap (opsional, Enter untuk skip): ").strip()
+        if nama_input:
+            args.nama = nama_input
+
+    if not args.email:
+        email_input = input("Email custom (opsional, Enter untuk skip): ").strip()
+        if email_input:
+            args.email = email_input
+
+    if not args.resend_email:
+        resend_input = input("Resend email verifikasi? [y/N]: ").strip().lower()
+        if resend_input in ("y", "yes"):
+            args.resend_email = True
     
 
     # Parse Verification ID
